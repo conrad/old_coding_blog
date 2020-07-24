@@ -1,0 +1,673 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Matt Conrad</title>
+    <link>http://conrad.github.io/</link>
+    <atom:link href="http://conrad.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Mon, 06 Jul 2015 23:49:01 -0700</pubDate>
+    <lastBuildDate>Mon, 06 Jul 2015 23:49:01 -0700</lastBuildDate>
+    <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Stay Ahead of the Curve. Start Using ES6 On All Your Projects Using Babel.</title>
+        <description>&lt;h1 id=&quot;get-ready-for-es6-by-using-it-now&quot;&gt;Get Ready for ES6… By Using It Now&lt;/h1&gt;
+
+&lt;p&gt;ECMAScript 6 scheduled officially to roll out in June 2015, but it’s been available for use for a while now. Not only that, but you can easily use a transpiler, like Babel or Traceur, to convert all ES6 code into JavaScript to maintain compatibility with current browsers. &lt;/p&gt;
+
+&lt;h1 id=&quot;using-babel-in-two-steps&quot;&gt;Using Babel In Two Steps&lt;/h1&gt;
+
+&lt;p&gt;Babel is shockingly easy to use, and the code it transpiles looks good, as though a reasonable human wrote it. &lt;/p&gt;
+
+&lt;p&gt;It takes only two shell commands. First, install install Babel in the command line using &lt;code&gt;npm&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$ npm install -g babel&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Then, to convert any file you write using ES6, use the &lt;code&gt;babel&lt;/code&gt; command with (a) the filename, (b) the flag &lt;code&gt;--out-file&lt;/code&gt; and (c) an output filename:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$ babel es6-script.js --out-file script-compiled.js&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Alternatively, you could transpile an entire directory of files into another by using the &lt;code&gt;--out-dir&lt;/code&gt; flag:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$ babel src --out-dir lib&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Or, even cooler, transpile the entire src directory and output it to the one concatenated file:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$ babel src --out-file script-compiled.js&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;add-babel-to-your-build-process-for-automatic-transpiling&quot;&gt;Add Babel To Your Build Process For Automatic Transpiling&lt;/h2&gt;
+
+&lt;p&gt;So that you don’t have to do this with every time you make edits to any file, add Babel to your build process. Gulp has a couple great options that have been easy to implement: &lt;a href=&quot;https://www.npmjs.com/package/gulp-babel&quot;&gt;gulp-babel&lt;/a&gt; and &lt;a href=&quot;https://github.com/babel/babelify&quot;&gt;babelify&lt;/a&gt;, for those who also love using Browserify (especially with React).&lt;/p&gt;
+
+&lt;p&gt;I’m still experimenting with build processes and hope to provide updates to this post. In the meantime, here’s one nice &lt;a href=&quot;https://gist.github.com/danharper/3ca2273125f500429945&quot;&gt;example Gulpfile&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;use-source-maps-to-help-in-debugging&quot;&gt;Use Source Maps To Help In Debugging&lt;/h2&gt;
+
+&lt;p&gt;I’ve worked on projects in CoffeeScript before and realize how annoying it can be to debug an application when errors continually occur in files that you’re not working on. The line numbers are all different, and the code feels foreign to you.&lt;/p&gt;
+
+&lt;p&gt;That’s what source maps are for. They tell you which line in the original files that the output code came from, whether transpiled, minified, or concatenated. You can also see that they’re implemented in the example Gulpfile shared above. For more, here is &lt;a href=&quot;http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/&quot;&gt;a clear and practical post on starting to use sourcemaps&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Adopting ES6 now is a great investment in yourself. Tools like Babel, gulp-babel/babelify, and source maps make it easy to stay ahead of the curce.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 14 May 2015 09:09:15 -0700</pubDate>
+        <link>http://conrad.github.io/jekyll/update/2015/05/14/babel.html</link>
+        <guid isPermaLink="true">http://conrad.github.io/jekyll/update/2015/05/14/babel.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>PGP Encryption Lessons &amp; Resources: Part 1 of 3</title>
+        <description>&lt;p&gt;I’ve been working with different methods for using message and file encryption, using PGP. Here are a lot of lessons I’ve learned in the process. &lt;/p&gt;
+
+&lt;p&gt;“PGP” is an acronym for “Pretty Good Privacy.” This humble moniker vastly understates this technology’s capability. PGP is literally “the closest you’re likely to get to military-grade encryption.”&lt;/p&gt;
+
+&lt;p&gt;There are several ways to use this technology, so I’ll try to clarify the areas of ambiguity that emerge from using several platforms. &lt;/p&gt;
+
+&lt;h2 id=&quot;the-way-it-works&quot;&gt;The Way It Works&lt;/h2&gt;
+
+&lt;p&gt;For PGP, everyone generates a public key and a private key. You share your public key with everyone on some form of keyserver. To send an encrypted file or message to someone else, you use his/her public key so that person is the only person able to decrypt the message. That person must use his/her secret matching key and passphrase for the decryption to work.&lt;/p&gt;
+
+&lt;h3 id=&quot;quick-historical-tidbit-and-naming-clarification&quot;&gt;Quick Historical Tidbit and Naming Clarification&lt;/h3&gt;
+
+&lt;p&gt;First of all, some tools use the name “GPG” instead of “PGP”, and this form of encryption is entirely compatible. The different names arose simply from historical reasons. PGP is a proprietary technology owned by Symantec, and GPG (and OpenPGP) developed as a free alternative. &lt;/p&gt;
+
+&lt;p&gt;I have also heard from a couple people that sharing PGP was disallowed by the US government. However, academic papers were out there explaining how to implement it. From grokking these papers, people in Europe were able to develop GPG. I have neither confirmed nor rejected this story. Please reach out to me if you know.&lt;/p&gt;
+
+&lt;h1 id=&quot;great-pgp-resources&quot;&gt;Great PGP Resources&lt;/h1&gt;
+
+&lt;p&gt;So far, I’ve found 3 different ways of sharing PGP-encrypted messages and files: &lt;a href=&quot;https://gpgtools.org/&quot;&gt;GPG Tools Suite&lt;/a&gt;, &lt;a href=&quot;https://keybase.io/&quot;&gt;Keybase.io&lt;/a&gt;, &amp;amp; &lt;a href=&quot;https://github.com/git-crypt/git-crypt/&quot;&gt;gitcrypt&lt;/a&gt;. I’ll provide resources for setting each up and discuss their quirks.&lt;/p&gt;
+
+&lt;h2 id=&quot;gpg-tools-suite-for-mac&quot;&gt;GPG Tools Suite (for Mac)&lt;/h2&gt;
+
+&lt;p&gt;If you would like a desktop application, try &lt;a href=&quot;https://gpgtools.org/&quot;&gt;GPG Tools Suite&lt;/a&gt;. The best starter for setting up this tool is &lt;a href=&quot;http://notes.jerzygangi.com/the-best-pgp-tutorial-for-mac-os-x-ever/&quot;&gt;here on Jerzy Gangi’s blog&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-nice-parts&quot;&gt;The Nice Parts&lt;/h3&gt;
+
+&lt;p&gt;The blog post shows you how to use this tool, but there are some nice facts to know and intriguing challenges to using GPG Tools. 
+- First, you have have to make sure to enable the actions of signing, encrypting, decrypting, and verifying by going to System Preferences &amp;gt; Keyboard &amp;gt; Shortcuts and clicking the checkbox next to each of the OpenPGP actions.
+- After that, you can right-click any highlighted text or file and go to the Services sub-menu&lt;/p&gt;
+
+&lt;h3 id=&quot;challenges&quot;&gt;Challenges&lt;/h3&gt;
+
+&lt;p&gt;You need to search for any of your friends on the GPG Tools keyserver. This process is relatively easy. You open your GPG Keychain and Lookup Key, where you enter the person’s name or email address. The challenge is knowing whether that person’s key is still up-to-date. A lot of people may have keys available on this keyserver that they don’t use anymore. There are some PGP that are becoming more popular, so you may think that you’re properly sending someone a message/file to a 3-year-old &lt;/p&gt;
+
+&lt;h2 id=&quot;posts-to-come&quot;&gt;Posts to Come&lt;/h2&gt;
+
+&lt;p&gt;I hope you enjoy checking out GPG Tools Suite. It’s worth having set up even if you check out and enjoy using the other tools I will write about in the posts to follow. These posts will be on Keybase.io and gitcrypt.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 04 May 2015 09:09:15 -0700</pubDate>
+        <link>http://conrad.github.io/jekyll/update/2015/05/04/pgp-encryption-1.html</link>
+        <guid isPermaLink="true">http://conrad.github.io/jekyll/update/2015/05/04/pgp-encryption-1.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>Being a Sniper with your Git History</title>
+        <description>&lt;p&gt;Checkout. Cherry-pick. Maybe revert, instead.&lt;/p&gt;
+
+&lt;p&gt;For some people, a clean Git history isn’t necessary. But for those who want to use a linear rebasing Git workflow (like the one below), it’s all about keeping things tidy.
+&lt;!-- {&lt;1&gt;}![clean-git-hist](/content/images/2015/03/clean-git-hist.png) --&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;visualizing-your-history&quot;&gt;Visualizing your history&lt;/h2&gt;
+&lt;p&gt;First, it’s easier to keep track of your history if you know how you want it to look in the first place. It’s also important to have a method in place for visualizing your history. Here’s a way to create a bash command for a nice presentation of your history, like the one above: 
+&lt;code&gt;log --pretty=format:&quot;%h %ad | %s%d [%an]&quot; --graph --date=short&lt;/code&gt;.
+I’d recommend creating an alias for  this command along the lines of &lt;code&gt;git hist&lt;/code&gt;. &lt;/p&gt;
+
+&lt;p&gt;With this bash command in hand, you can always keep track of where your commits are and when your commit history may have gone off the rails.&lt;/p&gt;
+
+&lt;h2 id=&quot;git-revert&quot;&gt;&lt;code&gt;git revert&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;If you just want to undo the effects of one or a couple commits, using &lt;code&gt;git revert &amp;lt;COMMIT_HASH&amp;gt;&lt;/code&gt; might be sufficient (where &lt;commit_hash&gt; is the identifier for the culprit commit). &lt;/commit_hash&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;git-cherry-pick-for-complete-removal&quot;&gt;&lt;code&gt;git cherry-pick&lt;/code&gt; for complete removal&lt;/h2&gt;
+&lt;p&gt;But if you want to remove one or a set of commits from your history completely (or just attach/squash them onto another branch of your history, you can follow this process:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Find the cleanest branch that runs as far in time as possible and make a new branch from it. If you’ve kept your work on feature branches and have been doing decent code review on pull requests, your master branch is a strong candidate. Check it out (&lt;code&gt;git checkout master&lt;/code&gt;), and then create a new branch to isolate what your about to do just to be safe (&lt;code&gt;git checkout -b &amp;lt;NEW_BRANCH&amp;gt;&lt;/code&gt;).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Use the bash command in the earlier section to identify the candidates for removal. You might need to check out the commits (&lt;code&gt;git checkout &amp;lt;COMMIT_HASH&amp;gt;&lt;/code&gt;) to determine the most recent commit that has all of the history you want and check that out.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Now, use &lt;code&gt;git reset --hard &amp;lt;COMMIT_HASH&amp;gt;&lt;/code&gt; to navigate to the LAST COMMIT BEFORE THE COMMITS THAT YOU WANT TO REMOVE, AND move the branches HEAD to this location with you.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Find all of the commits that you want to tag onto your project history and cherry-pick them. These are most likely several subsequent commits. You can cherry-pick one commit at a time with &lt;code&gt;git cherry-pick &amp;lt;COMMIT_HASH&amp;gt;&lt;/code&gt; or add on a range of consecutive commits with &lt;code&gt;git cherry-pick &amp;lt;START_HASH&amp;gt;..&amp;lt;END_HASH&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;cherry-picking-merge-commits&quot;&gt;Cherry-Picking Merge Commits&lt;/h3&gt;
+&lt;p&gt;However, if there are any merge commits in your history that you need to add on with &lt;code&gt;git cherry-pick&lt;/code&gt;, you have to handle these slightly differently. You need to tell the cherry-picking process which side of the merge is the mainline of your git history using the &lt;code&gt;-m&lt;/code&gt; or &lt;code&gt;--mainline&lt;/code&gt; flag with a number (1 or 2). Note: using &lt;code&gt;git merge&lt;/code&gt; could also be an option, which I’ll talk about later.&lt;/p&gt;
+
+&lt;p&gt;First, use &lt;code&gt;git log &amp;lt;MERGE_COMMIT_HASH&amp;gt;&lt;/code&gt; to figure out which branch of the merge you want to have as your base, or mainline. You’ll get an output that looks like this: 
+{&amp;lt;2&amp;gt;}&lt;img src=&quot;/content/images/2015/03/Screen-Shot-2015-03-15-at-11-11-24-AM.png&quot; alt=&quot;git log readout&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;There are two hash values indicated, “Merge: cfa8235 a64e7a6”
+The second one of these hashes is what matches my git history, so I want to specify “2” as my mainline for the cherry-pick command:
+&lt;code&gt;git cherry-pick -m 2 e245e34&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;git-merge-might-be-better&quot;&gt;&lt;code&gt;git merge&lt;/code&gt; might be better&lt;/h3&gt;
+&lt;p&gt;Recently, I’ve read that using &lt;code&gt;git merge&lt;/code&gt;, instead of &lt;code&gt;git cherry-pick -m&lt;/code&gt;, is generally advisable. Cherry-picking a merge commit may collapse all the changes made in the non-mainline parent into that one commit. You lose all of its history, and glom together all their diffs. My steps going forward will be to test out the use of &lt;code&gt;git merge&lt;/code&gt; in this situation.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 15 Mar 2015 09:09:15 -0700</pubDate>
+        <link>http://conrad.github.io/jekyll/update/2015/03/15/sniping-commits.html</link>
+        <guid isPermaLink="true">http://conrad.github.io/jekyll/update/2015/03/15/sniping-commits.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>Implementing 3D Rendering Libraries Inside React Views</title>
+        <description>&lt;p&gt;If you’re into putting 3D graphics in your web applications (or you want to be), you might like to try out Three.js and/or Famo.us. Both of these libraries are pretty amazing with what they can do in the browser. If you want to build an application that’s not entirely in 3D, however, it can be a bit of a beast to integrate these 3D scenes inside elements of another framework.&lt;/p&gt;
+
+&lt;p&gt;I’m working in a group that has started an application with a React/Flux framework. I’ve been working on a creating a potential visualization within React components using both Famo.us and Three.js, so I’ve just gone through this process with Famo.us, and I’m in the middle of making the integration happen with Three.js. Here’s the easiest process I’ve found (some sample code provided below):&lt;/p&gt;
+
+&lt;p&gt;(1) Place all of your Famo.us or Three.js code inside a method;&lt;br /&gt;
+(2) &lt;strong&gt;Browserify&lt;/strong&gt; your files so that you can use &lt;code&gt;require&lt;/code&gt; to pull in all of your dependencies (to see how to do this, just check out the Gulpfile code in my prior post);&lt;br /&gt;
+(3) Export your object with the desire method using &lt;code&gt;module.exports&lt;/code&gt;, which is also enabled by &lt;strong&gt;browserify&lt;/strong&gt;;&lt;br /&gt;
+(4) Create a &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; with a custom ID that you also set inside Famo.us/Three.js as as the element where the scene will render;&lt;br /&gt;
+(5) Require the desired Famo.us/Three.js object in the React component that has the specified &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; and invoke the appropriate method in the built-in &lt;code&gt;ComponentDidMount&lt;/code&gt; method for React components.&lt;/p&gt;
+
+&lt;p&gt;Now, your 3D scene shows up only when the precise React component has mounted. Initially, I thought that I might have to erase the scene with a method that would be invoked inside the &lt;code&gt;ComponentWillUnmount&lt;/code&gt;, but so far that hasn’t been the case. If anything changes on that front, I’ll make sure to update this post.&lt;/p&gt;
+
+&lt;p&gt;Here is some sample code demonstrating the steps above:&lt;/p&gt;
+
+&lt;p&gt;The React Component: &lt;/p&gt;
+&lt;pre&gt;
+/**
+ * @jsx React.DOM
+ */
+
+var React = require(&#39;react&#39;);
+var Famous = require(&#39;../famous/famous-scene.js&#39;);
+
+module.exports = React.createClass({
+
+  componentDidMount: function() {
+    Famous.displayScene(); 
+  },
+
+  render: function () {
+    return (
+      &amp;lt;div id=&quot;famous-scene&quot; data={this.props.data} /&amp;gt;
+    );
+  }
+});
+```
+&lt;br /&gt;
+The Famo.us scene:
+```
+var Engine = famous.core.Engine; 
+var StateModifier = famous.core.Modifier;
+var Transform = famous.core.Transform;
+var Surface = famous.core.Surface;
+// Note: This path syntax is enabled with Famo.us version 0.3.
+
+var Famous = {
+
+  displayScene: function( ) {
+    var destElement = document.getElementById(&#39;famous-scene&#39;);
+    var mainContext = Engine.createContext(destElement);
+
+    createSurface();
+
+    function createSurface() {
+      var surface = new Surface({
+        size: [100, 100],
+        content: &#39;surface&#39;,
+        properties: {
+          color: &#39;white&#39;,
+          textAlign: &#39;center&#39;,
+          backgroundColor: &#39;#FA5C4F&#39;
+        }
+      });
+
+      mainContext.add(surface);
+    }
+  }
+};
+
+module.exports = Famous;
+&lt;/pre&gt;
+
+&lt;p&gt;Once you’ve implemented the scene in this way, your scene should have its dimensions automatically set to those of its parent element. In Famo.us, the positioning is set to be “absolute”, so you’ll probably need to play with the CSS in order to make sure that the boundaries of the parent element don’t collapse.&lt;/p&gt;
+
+&lt;p&gt;While Famo.us appears to be incredibly fast, it doesn’t pop out the same way that our Three.js renderings have. Famo.us has a 3D layout engine, but it renders primarily 2-dimensional objects. So despite having worked on this integration, I’m planning to focus on our work in Three.js.&lt;/p&gt;
+
+&lt;p&gt;It would be a fascinating analysis to understand whether using React and Famo.us effectively leverages the strengths of these two technologies–each touted as being incredibly fast on its own. The intriguing piece to this analysis is that Famo.us renders incredibly quickly specifically because it seems to create and work with a flattened version of the DOM tree. On the other hand, React works well specifically by nesting one component after the other and passing along updates quickly down the tree, rendering only the differences in the data. This setup couches two different paradigms together.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 17 Feb 2015 08:09:15 -0800</pubDate>
+        <link>http://conrad.github.io/jekyll/update/2015/02/17/ThreeJs-in-React.html</link>
+        <guid isPermaLink="true">http://conrad.github.io/jekyll/update/2015/02/17/ThreeJs-in-React.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>Building the Right Gulpfile Default Command</title>
+        <description>&lt;p&gt;Every project requires a slightly different build process, but there are a set of principles and bread-and-butter tasks that each Gulpfile should have. &lt;/p&gt;
+
+&lt;p&gt;One great practice is to have just the most common and fundamental tasks be the default option, which is what runs when you simply write &lt;code&gt;gulp&lt;/code&gt; into your terminal. Save yourself some keystrokes. Consequently, this default command will be for useful in development (have a separate &lt;code&gt;gulp deploy&lt;/code&gt; command for deployment).  &lt;/p&gt;
+
+&lt;p&gt;For the front end of a web application, what is usually an optimal default process involves (1) cleaning out your distribution folder, (2) linting your code, (3) compiling whatever needs to be compiled, (4) concatenating your files, (5) minifying that code, (6) copying the files together to a distribution folder, (7) running a local server to view and test it, and (8) watching for any changes to the target files. You can characterize these actions as three steps: build, run, and watch. Given this breakdown, the build process encompasses the first 6 actions listed.&lt;/p&gt;
+
+&lt;p&gt;For these operations, you’ll need the following gulp dependencies:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;gulp&lt;/code&gt; (of course, but just don’t leave it out!)&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;gulp-clean&lt;/code&gt;  (or &lt;code&gt;rimraf&lt;/code&gt; now, which also give messages on deprecation)&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;gulp jshint&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;gulp-concat&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;gulp-ulglifyjs&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;gulp-minify-css&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;any compiling dependencies, like &lt;code&gt;browserify&lt;/code&gt; or &lt;code&gt;reactify&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;gulp-bower&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here is the rest of the code for the Gulp tasks that some colleagues and I wrote out for a project recently.&lt;/p&gt;
+
+&lt;p&gt;```
+gulp.task(‘clean’, function () {
+  return gulp.src([‘dist/js’, ‘dist/index.html’], {read: false})
+    .pipe(clean());
+});&lt;/p&gt;
+
+&lt;p&gt;// This task also requires the gulp-sass library (not included above).
+gulp.task(‘sass’, function(done) {
+  return gulp.src(paths.sass)
+    .pipe(sass())
+    .pipe(gulp.dest(‘./dist/css/’))
+    .pipe(sass({sourcemap: true}))
+    .pipe(minifyCss({
+      keepSpecialComments: 0
+    }))
+    .pipe(rename({ extname: ‘.min.css’ }))
+    .pipe(gulp.dest(‘./dist/css/’));
+});&lt;/p&gt;
+
+&lt;p&gt;gulp.task(‘copy’, function () {
+  return gulp.src(paths.html)
+    .pipe(gulp.dest(‘dist/’));
+});&lt;/p&gt;
+
+&lt;p&gt;// We used React, 
+    // for which browserify is useful for parsing its &lt;code&gt;require&lt;/code&gt; statements
+    // and reactify is is useful for compiling its JSX
+gulp.task(‘compile’, function(){
+  var b = browserify();
+  b.transform(reactify);   // use the reactify transform
+  b.add(‘./public/js/main.js’);
+  return b.bundle()
+    .pipe(source(‘main.js’))
+    .pipe(gulp.dest(‘./dist/js’));
+});&lt;/p&gt;
+
+&lt;p&gt;gulp.task(‘compress’, function() {
+  gulp.src(‘./dist/js/*.js’)
+    .pipe(uglify(‘main.min.js’))
+    .pipe(gulp.dest(‘dist/js’))
+});&lt;/p&gt;
+
+&lt;p&gt;gulp.task(‘build’, [‘clean’, ‘compile’, ‘compress’, ‘copy’, ‘sass’]);&lt;/p&gt;
+
+&lt;p&gt;gulp.task(‘watch’, function() {
+  gulp.watch(‘public/&lt;em&gt;*/&lt;/em&gt;.*’, [‘build’]);
+});&lt;/p&gt;
+
+&lt;p&gt;gulp.task(‘run’, shell.task([
+  ‘cd server &amp;amp;&amp;amp; nodemon server.js’
+]));&lt;/p&gt;
+
+&lt;p&gt;gulp.task(‘default’, [‘build’, ‘watch’, ‘run’]);
+```&lt;/p&gt;
+
+&lt;p&gt;There you go. Code for a nice Gulpfile with a robust default process that keeps a server running and up-to-date with your code! Profit.&lt;/p&gt;
+
+&lt;p&gt;Also, remember: ALWAYS name your gulpfile, &lt;code&gt;gulpfile.js&lt;/code&gt;. Otherwise, Gulp gets lost looking for it.&lt;/p&gt;
+
+&lt;p&gt;And be careful not to minify/uglify your external libraries. You’re likely to jumble up variables that you need set as references. Instead, simply use the minified versions that they provide, which then can be concatenated with the rest of the appropriate code.&lt;/p&gt;
+
+&lt;h3 id=&quot;update&quot;&gt;UPDATE:&lt;/h3&gt;
+&lt;p&gt;The methods inside a task occur asynchronously. Because my MacBook still has a hard disk (no solid state drive, sadly), the &lt;code&gt;compile&lt;/code&gt; method can often take too long before &lt;code&gt;copy&lt;/code&gt; tries to run, and then you get an error. This issue arises on my computer specifically because the I/O process requires so much more work on an old school HD than it does on SSD. To avoid this problem, I dug up the &lt;code&gt;run-sequence&lt;/code&gt; library (some others, like &lt;code&gt;gulp-sequence&lt;/code&gt; and &lt;code&gt;gulp-run-sequence&lt;/code&gt; didn’t work so well). Using this library’s methods allows you to run tasks synchronously. Here is the code to do it:&lt;/p&gt;
+
+&lt;p&gt;```
+var runSequence = require(‘run-sequence’);&lt;/p&gt;
+
+&lt;p&gt;//…&lt;/p&gt;
+
+&lt;p&gt;gulp.task( ‘build’, function(callback) {
+  runSequence(‘clean’, ‘compile’, ‘copy’, ‘sass’, callback); 
+});&lt;/p&gt;
+
+&lt;p&gt;gulp.task( ‘default’, function(callback) {
+  runSequence(‘build’, ‘watch’, ‘run’, callback);
+});
+```&lt;/p&gt;
+
+&lt;p&gt;Go forth and prosper.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 16 Feb 2015 08:09:15 -0800</pubDate>
+        <link>http://conrad.github.io/jekyll/update/2015/02/16/gulpfile.html</link>
+        <guid isPermaLink="true">http://conrad.github.io/jekyll/update/2015/02/16/gulpfile.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>Learning React &amp; Flux + Project Size Considerations</title>
+        <description>&lt;p&gt;Over the past week, I decided to pick up React and build out the front end for a web application that allows users to search and manage their files on Dropbox and Google Drive. Wanting to learn about Flux, which I’d heard about so much, I pieced together all the files I thought I’d need. &lt;/p&gt;
+
+&lt;p&gt;The React components provide the views to the application in JSX, which is awesome. The setup is intuitive and cohesive. Any time variables inside a component change, whether state variable or property variables passed to the component, the view re-renders. Listeners for any changes elsewhere in the data are easy to add and remove into any component using the built-in &lt;code&gt;componentDidMount()&lt;/code&gt; and &lt;code&gt;componentWillUnmount()&lt;/code&gt; methods. You maintain state in as few components as possible, and you just keep those stated up-to-date with your source of truth, using these listeners. From the components holding state variables, the data shoots down into the rest of the components, which just access the data in the &lt;code&gt;this.props&lt;/code&gt; attribute of each component.&lt;/p&gt;
+
+&lt;p&gt;Flux is an ingenious setup, but, in retrospect, a lower-overhead, custom model and controller would have made more sense for an application as small as this one was. Because I wanted to mingle the handling of all of the files from both Dropbox and Google Drive, I only used one store in the Flux setup. With only one store and one actions file, the dispatcher doesn’t turn out to add much value. The constants file is amazingly useful, but its value correlates with the number of variables you’re having to keep up with. Disengaging the application from the Flux architecture only requires a handful of changes in references to the Actions file and the Store. &lt;/p&gt;
+
+&lt;p&gt;I’m planning either to refactor this project into a more streamlined approach or to try my hand at a couple more projects, where I can try a more stripped-down approach.&lt;/p&gt;
+
+&lt;p&gt;On the other hand, I worked with a couple friends in the last few days to refactor an Angular project to incorporate React, using the ngReact library. This library is great and well-documented. I’ll have to see if this hybrid setup makes sense in the near future. After a few projects in Angular, it was refreshing in React to have a greater sense of visibility into what the code was doing. &lt;/p&gt;
+
+&lt;p&gt;If you get the chance, I would certainly give React a try. Here are some great starting places:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://egghead.io/lessons/react-development-environment-setup&quot;&gt;Egghead - React Tutorial Videos &amp;amp; Examples&lt;/a&gt;
+These videos are great primers, but keep in mind there are a few minor practices that they use that are being deprecated. For example, they use the method renderComponent instead of render, which causes a warning, but still works. For the most up-to-date practices (but, frankly, not as good of a walkthrough), look to the other sources below.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/facebook/flux/tree/master/examples&quot;&gt;Facebook Example Code for Simple Apps&lt;/a&gt;
+Learn by going to the source. Use their code as a model. The architecture is based straight off of these example projects.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://facebook.github.io/react/&quot;&gt;React Docs&lt;/a&gt; and &lt;a href=&quot;https://facebook.github.io/flux/&quot;&gt;Flux Docs&lt;/a&gt;
+Again, the source. Good as gold with these prior examples.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Remember, React is a view renderer. That is all. Flux is a methodology/architecture for manipulating and storing the information that you’re rendering. Basically, Flux is one way to build the “MC” of your MVC (with React being your “V”). Here are some other materials to bring you up to speed on React and Flux:&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 09 Feb 2015 08:09:15 -0800</pubDate>
+        <link>http://conrad.github.io/jekyll/update/2015/02/09/react-flux-size.html</link>
+        <guid isPermaLink="true">http://conrad.github.io/jekyll/update/2015/02/09/react-flux-size.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>HTML5 geolocation functions</title>
+        <description>&lt;p&gt;Today, I’ve been working on an application using Ionic (with Angular &amp;amp; Cordova) and the Google Maps API. One of the most exciting parts of this project has been getting to learn to use the geolocation object in HTML5. In particular, I wrote a couple methods that would set a marker that follows the user on the map. &lt;/p&gt;
+
+&lt;!-- ``` --&gt;
+&lt;pre&gt;
+  /* 
+  * This Angular method uses HTML5 to find your location.
+  * Then, it creates a marker at this location with a custom icon at the location.
+  * Finally, it invokes the watchPosition method to update call $scope.moveUser whenever it senses a change in location.
+  */
+  $scope.placeUser = function() {
+    navigator.geolocation.getCurrentPosition(function (pos) {
+      $rootScope.pos = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+
+      $scope.userMarker = new google.maps.Marker({
+        position: $rootScope.pos,
+        map: $scope.map,
+        title: &#39;You are here&#39;,
+        icon: &#39;/img/jaunty_tiny.png&#39;
+      });
+
+      $scope.watchId = navigator.geolocation.watchPosition($scope.moveUser); 
+    });
+  };
+
+  /*
+  * This method uses getCurrentPosition again and updates one&#39;s position on the map.
+  */
+  $scope.moveUser = function() {
+    navigator.geolocation.getCurrentPosition(function (pos) {
+      $rootScope.pos = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+      $scope.userMarker.setPosition($rootScope.pos); 
+
+      $scope.checkForStop();
+    });
+  };
+&lt;/pre&gt;
+
+&lt;p&gt;These were a fun use of asynchronous callback functions. I also tried invoking moveUser after a constant period of time, using setInterval. I set the interval to be 2 seconds, and it seemed to work without any problem. Depending on the sensitivity of watchProvider in the geolocation object, I would think still that using watchProvider would be optimal.&lt;/p&gt;
+
+&lt;p&gt;After the creation of these methods, I just had to invoke this function in the &lt;code&gt;initialize&lt;/code&gt; of the map’s controller.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 05 Feb 2015 08:09:15 -0800</pubDate>
+        <link>http://conrad.github.io/jekyll/update/2015/02/05/geolocation-functions.html</link>
+        <guid isPermaLink="true">http://conrad.github.io/jekyll/update/2015/02/05/geolocation-functions.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>Setting up Sublime Text 3 as your Git Editor</title>
+        <description>&lt;p&gt;If you want Sublime Text 3 to pop up as your editor whenever you execute &lt;code&gt;git commit&lt;/code&gt;, &lt;code&gt;git rebase -i HASH&lt;/code&gt;, or the like, it may take a relatively simple bash (or zsh) command. But there are one or two pitfalls to watch out for. I just spent a few minutes teaching myself a bit about bin folder maintenance, setting one’s bashrc/zshrc PATH, and editing one’s &lt;code&gt;.gitconfig&lt;/code&gt; file in order to get this editor set as Git’s default on my machine.&lt;/p&gt;
+
+&lt;h2 id=&quot;tldr&quot;&gt;tl;dr&lt;/h2&gt;
+
+&lt;p&gt;If your Sublime Text 3 and bin folder are already configured perfectly, this terminal command should do the trick:
+  &lt;code&gt;git config --global core.editor &quot;subl -n --wait&quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If this doesn’t work, make sure that your Sublime Text alias is set up in the proper bin directory.&lt;/p&gt;
+
+&lt;h2 id=&quot;setting-up-your-sublime-alias-in-bin&quot;&gt;Setting up your Sublime Alias in bin&lt;/h2&gt;
+
+&lt;p&gt;On my machine, I have a long list of aliases defined in a .bash_profile file. These aliases create custom terminal commands that you can execute manually. However, processes calling the bash commands require a binary command file to exist in a directory accessible by a PATH, defined either your machine’s $PATH or extended in a .bashrc (or .zshrc) file. &lt;/p&gt;
+
+&lt;p&gt;This might be done with a line like so: &lt;code&gt;export PATH=&quot;$PATH:$HOME/bin&quot;&lt;/code&gt;. 
+In your .bashrc file, this line of code should add the ~/bin folder as a potential location for binary commands. Learning about these settings has been fascinating so far. If you’re interested in learning more &lt;a href=&quot;http://www.linfo.org/bin.html&quot;&gt;here&lt;/a&gt; is a good place to start.&lt;/p&gt;
+
+&lt;p&gt;In order for these sorts of paths to find &lt;code&gt;subl&lt;/code&gt; as a command, you need to a have a file one of the appropriate bin folders. With Sublime Text 3 (not 2), you can accomplish this with the following command in the terminal:
+&lt;code&gt;ln -s &quot;/Application/Sublime Text/.app/Contents/SharedSupport/bin/subl&quot; /usr/local/bin/subl&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This command will add the file to directory in the path at its end: &lt;code&gt;/usr/local/bin/subl&lt;/code&gt;. This directory is one of many, technically including any of the locations listed when you enter &lt;code&gt;$PATH&lt;/code&gt; in the command line–each possible path is separated by colons “:”).  This path is probably the best option, or maybe &lt;code&gt;~/bin/subl&lt;/code&gt;. &lt;/p&gt;
+
+&lt;p&gt;By the way, make sure that these directories exist on your machine. Otherwise, you’ll be set with an alias binary command to Sublime Text 3.&lt;/p&gt;
+
+&lt;h2 id=&quot;editing-gitconfig&quot;&gt;Editing .gitconfig&lt;/h2&gt;
+
+&lt;p&gt;Now, to have Git use Sublime Text 3 as its editor when you &lt;code&gt;git commit&lt;/code&gt; or &lt;code&gt;git rebase -i...&lt;/code&gt;, you must edit your .gitconfig file in your HOME folder (~). You can edit it directly, or you can do it in the terminal command line. Unfortunately, pretty much all of the information on this out there is for Sublime Text 2, and Sublime Text 3 requires a slight change for the .gitconfig file to work with the editor properly. &lt;/p&gt;
+
+&lt;p&gt;Instead of using a lowercase &lt;code&gt;-w&lt;/code&gt; to tell the terminal to wait to continue until the editor has been closed, you have to use &lt;code&gt;--wait&lt;/code&gt;. The documentation for Sublime Text 3 says that an uppercase &lt;code&gt;-W&lt;/code&gt; should work, but unfortunately that’s wasn’t true for me in this case. I’d love some feedback if you have a different experience. &lt;/p&gt;
+
+&lt;p&gt;This text required in .gitconfig can go at the end of the file:
+&lt;code&gt;editor = subl -n --wait&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The following terminal command will enter this text into the file:
+&lt;code&gt;git config --global core.editor &quot;subl -n --wait&quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;There you go.&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 04 Feb 2015 08:09:15 -0800</pubDate>
+        <link>http://conrad.github.io/jekyll/update/2015/02/04/sublime-text-as-git-editor.html</link>
+        <guid isPermaLink="true">http://conrad.github.io/jekyll/update/2015/02/04/sublime-text-as-git-editor.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>A Lua Script for Mouse Control with a Myo Armband (in ~4 easy steps)</title>
+        <description>&lt;p&gt;Recently, I received a developer’s kit for the Myo Armband from Thalmic Labs. Fortunately, for me, the Myo’s SDK has a JavaScript binding, and I’ve been working in JS for most of my waking hours recently. Unfortunately, I’ve had time only to play with the scripting language that works with it on simple applications, instead of being able to dig deeply into the JS library. Enter Lua.&lt;/p&gt;
+
+&lt;p&gt;Lua is a pretty simple and intuitive scripting language. You’ll see some of its syntactic quirks below, but I’ve been able to build out a few scripts for controlling web apps, like 2048 and Flappy Bird. The one included in this post is the most useful one of my scripts so far. It’s simple and universal. It allows the wearer to perform most mouse functions anywhere in the computer mapped to the following arm motions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Mouse movement: change arm orientation&lt;/li&gt;
+  &lt;li&gt;Left click: wave hand to the left&lt;/li&gt;
+  &lt;li&gt;Right click: wave hand to the right&lt;/li&gt;
+  &lt;li&gt;Drag/Grab: make a fist&lt;/li&gt;
+  &lt;li&gt;Activate/Deactivate Myo mouse control: tap thumb and middle finger together twice.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And now, ~4 easy steps to have universal mouse control with your Myo Armband:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Download &amp;amp; install Myo Connect from the Thalmic Labs site:
+  https://www.thalmic.com/start/&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Paste the script below into a file saved with the extension ‘.lua’
+  Using the lua file on your computer should require zero setup (at least this was the case from my Mac on Yosemite). I’m not certain, but the script is probably all read within Myo Connect.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add the lua file to your Myo Connect Application Manager.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;First, open the Myo Connect Application Manager. Myo Connect should appear in the menu bar of your desktop when it’s running.&lt;/p&gt;
+
+&lt;p&gt;Click on it and open the Application Manager.&lt;/p&gt;
+
+&lt;p&gt;Now, click the Add button in the Application Manager and select the lua file you just saved.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Plug the bluetooth transmitter into the USB, pull on the armband, and perform the Myo’s Sync Gesture (waving your hand outward and rotating your arm outward 90 degrees). &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;If the application is switched on in Myo Connect, your Myo Armband will be active and moving around the mouse.&lt;/p&gt;
+
+&lt;h4 id=&quot;the-script&quot;&gt;The Script&lt;/h4&gt;
+
+&lt;p&gt;Again, save a file of text with a .lua extension and paste in this script:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;scriptId = &#39;co.mattconrad.mouseControl&#39;  -- or any url in this format 
+scriptTitle = &#39;Mouse Control&#39;
+scriptDetailsUrl = &#39;&#39;
+-- The lines above are necessary for any Myo application but will not otherwise affect the functionality of your script, unless you are attempting to post it online to the Myo Market.`
+
+-- The following lines set the initial state so that the Myo Armband is active and stays active unless intentionally locked with the toggling gesture
+myo.setLockingPolicy(&#39;none&#39;)
+mouseEnabled = true
+myo.controlMouse(mouseEnabled)
+
+-- This function is required for the armband to become active. Here, it is set so that it stay active no matter which window is active.
+function onForegroundWindowChange(app, title)
+  return true
+end
+
+-- This function uses a built-in method to determine which arm the Myo is on. If it&#39;s on the left arm, the direction for each of the wave methods needs to be reversed.
+function conditionallySwapWave(pose)
+  if myo.getArm == &quot;left&quot; then
+    -- waveOut for waveIn
+    if pose == &quot;waveIn&quot; then
+      pose = &quot;waveOut&quot;
+    -- and waveIn for waveOut 
+    elseif pose == &quot;waveOut&quot; then
+      pose = &quot;waveIn&quot;
+    end
+  end
+  -- make sure to return the new value
+  return pose
+end
+
+-- Map gestures to actions
+-- These use several of Myo&#39;s preset gestures or poses
+-- The edge variable is like a boolean that is &#39;on&#39; whenever a pose evaluates to be true. You probably want edge to be &#39;on&#39; in order to initiate any actions, unless you&#39;re setting a timer based on inactivity
+function onPoseEdge(pose, edge)
+  if (edge == &#39;on&#39;) then`
+    -- Change the wave direction if necessary
+    pose = conditionallySwapWave(pose)
+
+    if (pose == &#39;fist&#39;) then
+      grab()
+      -- myo.debug(&#39;grabbed&#39;)
+
+    elseif (pose == &#39;waveIn&#39;) then
+      leftClick()
+
+    elseif (pose == &#39;waveOut&#39;) then
+      rightClick()
+
+    elseif (pose == &#39;doubleTap&#39;) then
+        toggleMouseControl()
+    end
+
+  elseif (edge == &#39;off&#39;) then
+    ungrab()
+  end
+end
+
+function toggleMouseControl()
+  mouseEnabled = not mouseEnabled
+  myo.vibrate(&#39;medium&#39;)
+  -- myo.debug(&quot;it&#39;s on&quot;)
+  myo.controlMouse(mouseEnabled);
+end
+
+-- Here is where we map each of the gestures to the appropriate action
+function leftClick()
+  myo.mouse(&#39;left&#39;, &#39;click&#39;)
+end
+
+function rightClick()
+  myo.mouse(&#39;right&#39;, &#39;click&#39;)
+end
+
+function grab()
+  myo.mouse(&#39;left&#39;, &#39;down&#39;)
+end
+
+function ungrab()
+  myo.mouse(&#39;left&#39;, &#39;up&#39;)
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;further-notes-on-this-script-and-lua&quot;&gt;Further notes on this script and Lua:&lt;/h3&gt;
+
+&lt;p&gt;If you should ever want to monitor the output or debug any scripts in Lua, you may insert the command myo.debug() into whatever code your curious about.  And you can pass any string or variable to it in order to see its value whenever the code is executed. THEN, you need to open the Myo Connect Preferences (found in the drop-down from the desktop menu bar) and tick the box to Enable Developer Mode.&lt;/p&gt;
+
+&lt;p&gt;Currently, there are a few of these myo.debug() statements already in the script but commented out, using Lua’s comment syntax “–” at the beginning of the line.&lt;/p&gt;
+
+&lt;p&gt;From here, I’m hoping to write a few applications to use the Myo with an Oculus Rift (or really… a Cardboard), but these scripts have been a gratifying place to begin. If you’re trying out a Myo or thinking about building something similar for another device, I hope you find this to be a useful starter as well.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 20 Dec 2014 08:09:15 -0800</pubDate>
+        <link>http://conrad.github.io/jekyll/update/2014/12/20/myo-lua.html</link>
+        <guid isPermaLink="true">http://conrad.github.io/jekyll/update/2014/12/20/myo-lua.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+  </channel>
+</rss>
